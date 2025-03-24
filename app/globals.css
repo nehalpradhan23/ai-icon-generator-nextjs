@@ -156,3 +156,6 @@ body {
 .text-primary {
   @apply text-teal-700;
 }
+.border-primary {
+  @apply border-teal-700;
+}
