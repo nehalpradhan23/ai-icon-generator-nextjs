@@ -1,36 +1,36 @@
 import React, { useEffect, useState } from "react";
 import HeadingDescription from "./HeadingDescription";
-// import axios from "axios";
-// import Prompt from "@/app/_data/Prompt";
 import { Loader2Icon } from "lucide-react";
+import Prompt from "@/app/_data/Prompt";
+import axios from "axios";
 
 function LogoIdea({ formData, onHandleInputChange }) {
   const [ideas, setIdeas] = useState();
   const [loading, setLoading] = useState(false);
   const [selectedOption, setSelectedOption] = useState(formData?.idea);
-  // useEffect(() => {
-  //   generateLogoDesignIdea();
-  // }, []);
+  useEffect(() => {
+    generateLogoDesignIdea();
+  }, []);
 
-  // const generateLogoDesignIdea = async () => {
-  //   setLoading(true);
-  //   const PROMPT = Prompt.DESIGN_IDEA_PROMPT.replace(
-  //     "{logoType}",
-  //     formData?.design.title
-  //   )
-  //     .replace("{logoTitle}", formData.title)
-  //     .replace("{logoDesc}", formData.desc)
-  //     .replace("{logoPrompt}", formData.design.prompt);
+  const generateLogoDesignIdea = async () => {
+    setLoading(true);
+    const PROMPT = Prompt.DESIGN_IDEA_PROMPT.replace(
+      "{logoType}",
+      formData?.design.title
+    )
+      .replace("{logoTitle}", formData.title)
+      .replace("{logoDesc}", formData.desc)
+      .replace("{logoPrompt}", formData.design.prompt);
 
-  //   // console.log(PROMPT);
-  //   // const result = await axios.post("/api/ai-design-ideas", {
-  //   //   prompt: PROMPT,
-  //   // });
+    // console.log(PROMPT);
+    const result = await axios.post("/api/ai-design-ideas", {
+      prompt: PROMPT,
+    });
 
-  //   console.log(result.data);
-  //   !ideas && setIdeas(result.data.ideas);
-  //   setLoading(false);
-  // };
+    console.log(result.data);
+    !ideas && setIdeas(result.data.ideas);
+    setLoading(false);
+  };
 
   return (
     <div className="my-10">
