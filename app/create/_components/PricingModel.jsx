@@ -4,6 +4,8 @@ import HeadingDescription from "./HeadingDescription";
 import Image from "next/image";
 import { Button } from "@/components/ui/button";
 import { SignIn, SignInButton, useUser } from "@clerk/nextjs";
+import { useRouter } from "next/navigation";
+import Link from "next/link";
 
 const pricingOption = [
   {
@@ -33,6 +35,7 @@ const pricingOption = [
 
 function PricingModel({ formData }) {
   const { user } = useUser();
+  const router = useRouter();
 
   useEffect(() => {
     if (formData?.title && typeof window !== "undefined") {
@@ -67,7 +70,16 @@ function PricingModel({ formData }) {
               ))}
             </div>
             {user ? (
-              <Button className={"mt-5"}>{pricing.button}</Button>
+              <Link href={"/generate-logo?type=" + pricing?.title}>
+                <Button
+                  // onClick={() =>
+                  //   router.push("/generate-logo?type=" + pricing?.title)
+                  // }
+                  className={"mt-5"}
+                >
+                  {pricing.button}
+                </Button>
+              </Link>
             ) : (
               <SignInButton
                 mode="modal"
