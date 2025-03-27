@@ -4,7 +4,6 @@ import HeadingDescription from "./HeadingDescription";
 import Image from "next/image";
 import { Button } from "@/components/ui/button";
 import { SignIn, SignInButton, useUser } from "@clerk/nextjs";
-import { useRouter } from "next/navigation";
 import Link from "next/link";
 
 const pricingOption = [
@@ -29,13 +28,12 @@ const pricingOption = [
       "⚫ Wait time: Less than 10 seconds",
       "⚫ Only 5 Credits",
     ],
-    button: "Generate Free",
+    button: "Generate for 1 credit",
   },
 ];
 
 function PricingModel({ formData }) {
   const { user } = useUser();
-  const router = useRouter();
 
   useEffect(() => {
     if (formData?.title && typeof window !== "undefined") {

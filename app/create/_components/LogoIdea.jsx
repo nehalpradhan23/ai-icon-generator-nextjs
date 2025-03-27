@@ -9,7 +9,9 @@ function LogoIdea({ formData, onHandleInputChange }) {
   const [loading, setLoading] = useState(false);
   const [selectedOption, setSelectedOption] = useState(formData?.idea);
   useEffect(() => {
-    generateLogoDesignIdea();
+    if (!ideas) {
+      generateLogoDesignIdea();
+    }
   }, []);
 
   const generateLogoDesignIdea = async () => {

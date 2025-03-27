@@ -14,7 +14,7 @@ function LogoDesc({ onHandleInputChange, formData }) {
         type="text"
         defaultValue={formData?.desc}
         // value={formData?.desc}
-        placeholder="Enter your logo name"
+        placeholder="Enter your logo vision"
         className="p-4 border rounded-lg mt-5 w-full"
         onChange={(e) => onHandleInputChange(e.target.value)}
       />
