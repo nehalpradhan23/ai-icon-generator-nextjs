@@ -14,7 +14,7 @@ export async function POST(req) {
   });
 
   try {
-    return;
+    // return;
     // TODO
     // generate AI text prompt for logo
     const AiPromptResult = await AILogoPrompt.sendMessage(prompt);
@@ -57,14 +57,14 @@ export async function POST(req) {
         {
           input: {
             seed: 0,
-            width: 848,
-            height: 848,
+            width: 400,
+            height: 400,
             prompt: AIPrompt,
             num_outputs: 1,
             aspect_ratio: "1:1",
             output_format: "png",
             guidance_scale: 3.5,
-            output_quality: 80,
+            output_quality: 30,
             num_inference_steps: 8,
           },
         }

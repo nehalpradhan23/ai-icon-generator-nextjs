@@ -2,6 +2,7 @@
 import { Button } from "@/components/ui/button";
 import { UserButton, useUser } from "@clerk/nextjs";
 import Image from "next/image";
+import Link from "next/link";
 import { useRouter } from "next/navigation";
 import React from "react";
 
@@ -19,9 +20,11 @@ function Header() {
       </div>
       <div className="flex gap-3 items-center">
         {user ? (
-          <Button variant={"outline"} className="cursor-pointer">
-            Dashboard
-          </Button>
+          <Link href="/dashboard">
+            <Button variant={"outline"} className="cursor-pointer">
+              Dashboard
+            </Button>
+          </Link>
         ) : (
           <Button className={"buttons"}>Get Started</Button>
         )}
